@@ -9,9 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagePeople.API", "ManageP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagePeople.Data", "ManagePeople.Data\ManagePeople.Data.csproj", "{C3410851-6EED-4E14-B7FA-035ABB47459D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagePeople.Business.Service", "ManagePeople.Business.Service\ManagePeople.Business.Service.csproj", "{C3374F9D-5E75-4056-B9F0-BAE52A5985F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagePeople.Business", "ManagePeople.Business.Service\ManagePeople.Business.csproj", "{C3374F9D-5E75-4056-B9F0-BAE52A5985F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagePeople.API.Service", "ManagePeople.API.Service\ManagePeople.API.Service.csproj", "{53D26354-C04E-416B-BAD3-94A2D036E999}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagePeople.Repository", "ManagePeople.API.Service\ManagePeople.Repository.csproj", "{53D26354-C04E-416B-BAD3-94A2D036E999}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagePeople.ViewModels", "ManagePeople.ViewModels\ManagePeople.ViewModels.csproj", "{A7F59735-5D2F-4DEA-91ED-C89BB5F26B35}"
 EndProject
