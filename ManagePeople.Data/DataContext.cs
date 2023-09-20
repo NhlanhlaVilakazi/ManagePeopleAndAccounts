@@ -11,7 +11,8 @@ namespace ManagePeople.Data
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(new SqlConnection(ServicesExtensions.defaultConnectionString));
+            var conn = ServicesExtensions.GetApplicationConnectionString();
+            optionsBuilder.UseSqlServer(new SqlConnection(conn));
         }
     }
 }

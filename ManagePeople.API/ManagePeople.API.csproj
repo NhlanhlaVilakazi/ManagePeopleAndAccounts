@@ -11,4 +11,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ManagePeople.API.Service\ManagePeople.Repository.csproj" />
+    <ProjectReference Include="..\ManagePeople.Business.Service\ManagePeople.Business.csproj" />
+    <ProjectReference Include="..\ManagePeople.ViewModels\ManagePeople.ViewModels.csproj" />
+  </ItemGroup>
+
 </Project>
