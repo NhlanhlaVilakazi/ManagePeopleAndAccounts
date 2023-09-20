@@ -3,7 +3,6 @@ using ManagePeople.Data.DataModels.User;
 using ManagePeople.Repository.Interface;
 using ManagePeople.ViewModels.User;
 using Microsoft.AspNetCore.Mvc;
-using System.Net;
 
 namespace ManagePeople.API.Controllers
 {

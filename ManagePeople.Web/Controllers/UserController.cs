@@ -10,11 +10,13 @@ namespace ManagePeople.Web.Controllers
         public UserController(IApiCallService<UserInfoViewModel> apiService)
         {
             _apiService = apiService;
+            _apiService.requestUrl = "User";
         }
-        public IActionResult RegisterUser(UserInfoViewModel userInfo)
+        [HttpGet]
+        public async Task<int> RegisterUser(UserInfoViewModel userInfo)
         {
-            _apiService.Save(userInfo);
-            return View();
+            var results = await _apiService.Save(userInfo);
+            return (int) results;
         }
     }
 }
