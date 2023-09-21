@@ -12,7 +12,15 @@ namespace ManagePeople.Web.Controllers
             _apiService = apiService;
             _apiService.requestUrl = "User";
         }
-        [HttpGet]
+
+        [HttpPost]
+        public async Task<bool> Login(UserInfoViewModel userInfo)
+        {
+            var results = await _apiService.Login(userInfo);
+            return results;
+        }
+
+        [HttpPost]
         public async Task<int> RegisterUser(UserInfoViewModel userInfo)
         {
             var results = await _apiService.Save(userInfo);

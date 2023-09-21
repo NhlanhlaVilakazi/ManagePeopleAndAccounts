@@ -16,7 +16,8 @@ namespace ManagePeople.API.Controllers
             _repository= repository;
         }
 
-        [HttpPost("/Login")]
+        [Route("Login")]
+        [HttpPost]
         public async Task<bool> Login(UserInfoViewModel userInfo)
         {
             var userInfoModel = ObjectMapper.Mapper.Map<UserInfo>(userInfo);
@@ -28,8 +29,7 @@ namespace ManagePeople.API.Controllers
         public async Task<int> RegisterUser(UserInfoViewModel userInfo)
         {
             var userInfoModel = ObjectMapper.Mapper.Map<UserInfo>(userInfo);
-            var result = await _repository.Register(userInfoModel);
-            return result;
+            return await _repository.Register(userInfoModel);
         }
     }
 }

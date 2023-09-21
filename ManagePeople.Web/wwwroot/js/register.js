@@ -1,5 +1,15 @@
 ﻿
 $(document).ready(function () {
+
+    var shared = new SharedFunctionality();
+
+    if (shared.getUserState() === "logged-in") {
+        $("#persons-btn").text("Logout");
+    }
+    else {
+        $("#persons-btn").text("Persons");
+    }
+
     $(".register-link").click(function () {
         $(".wrapper").addClass("active");
     });
@@ -9,11 +19,18 @@ $(document).ready(function () {
     });
 
     $(".login-btn").click(function () {
-        if ($(".wrapper").hasClass("popup-active")) {
-            $(".wrapper").removeClass("popup-active");
+        debugger
+        if (shared.getUserState() === "logged-in") {
+            shared.setUserState("logged-out");
+            $("#persons-btn").text("Persons");
         }
         else {
-            $(".wrapper").addClass("popup-active");
+            if ($(".wrapper").hasClass("popup-active")) {
+                $(".wrapper").removeClass("popup-active");
+            }
+            else {
+                $(".wrapper").addClass("popup-active");
+            }
         }
     });
 
@@ -21,7 +38,7 @@ $(document).ready(function () {
         $(".wrapper").removeClass("popup-active");
     });
 
-    $("#site-login-btn").click(function () {
+    $("#site-register-btn").click(function () {
         var username = $("#usernameTxt").val();
         var password = $("#passwordTxt").val();
         var confirm = $("#confirmTxt").val();
@@ -31,22 +48,28 @@ $(document).ready(function () {
         if (!hasErrors(username, password, confirm)) {
             if (passwordMatch(password, confirm)) {
                 
-                animateButton("#site-login-btn");
+                shared.animateButton("#site-register-btn");
                 $.ajax({
                     url: "../User/RegisterUser",
-                    type: "GET",
+                    type: "POST",
                     data: { username: username, password: password },
                     success: function (result) {
                         if (result === 200) {
-                            stopButtonAnimation("#site-login-btn", "Register");
+                            stopButtonAnimation("#site-register-btn", "Register");
+                            $("#usernameTxt").val("");
+                            $("#passwordTxt").val("");
+                            $("#confirmTxt").val("");
+                            $(".wrapper").removeClass("popup-active");
+                            $("#persons-btn").html('<span class="" role="status" aria-hidden="true"></span> Logout');
+                            shared.setUserState("logged-in");
                         } else {
-                            stopButtonAnimation("#site-login-btn", "Register");
+                            shared.stopButtonAnimation("#site-register-btn", "Register");
                             $("#error-label").text("An error occured, please try again later..");
 
                         }
                     },
                     error: function (err) {
-                        stopButtonAnimation("#site-login-btn", "Register");
+                        shared.stopButtonAnimation("#site-register-btn", "Register");
                         $("#error-label").text("An error occured, please try again later..");
 
                     }
@@ -85,18 +108,4 @@ function passwordMatch(password, confirm) {
         return true;
     }
     return false;
-}
-
-function animateButton(buttonId) {
-    setTimeout(function () {
-        $(buttonId).prop("disabled", true);
-        $(buttonId).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...');
-    }, 200);
-}
-
-function stopButtonAnimation(buttonId, text) {
-    setTimeout(function () {
-        $(buttonId).prop("disabled", false);
-        $(buttonId).html(text);
-    }, 200);
 }
