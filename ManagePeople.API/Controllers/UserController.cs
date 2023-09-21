@@ -16,11 +16,20 @@ namespace ManagePeople.API.Controllers
             _repository= repository;
         }
 
+        [HttpPost("/Login")]
+        public async Task<bool> Login(UserInfoViewModel userInfo)
+        {
+            var userInfoModel = ObjectMapper.Mapper.Map<UserInfo>(userInfo);
+            var results = await _repository.AllowUserLogin(userInfoModel);
+            return results;
+        }
+
         [HttpPost]
         public async Task<int> RegisterUser(UserInfoViewModel userInfo)
         {
             var userInfoModel = ObjectMapper.Mapper.Map<UserInfo>(userInfo);
-            return await _repository.Register(userInfoModel);
+            var result = await _repository.Register(userInfoModel);
+            return result;
         }
     }
 }

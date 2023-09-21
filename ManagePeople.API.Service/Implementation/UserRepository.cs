@@ -19,14 +19,11 @@ namespace ManagePeople.Repository.Implementation
             SqlParameter[] parameters =
             {
                 new SqlParameter("@username", userInfo.username),
-                new SqlParameter("@password", SqlDbType.VarChar, 100)
-                {
-                    Value = userInfo.password ?? (object)DBNull.Value
-                },
+                new SqlParameter("@password", userInfo.password),
                 new SqlParameter("@results", 0){  Direction = ParameterDirection.Output, SqlDbType = SqlDbType.Bit }
             };
 
-            await _dbContext.Database.ExecuteSqlRawAsync("[UserAuthorised] @username, @password, @result OUT", parameters);
+            await _dbContext.Database.ExecuteSqlRawAsync("[Login] @username, @password, @results OUT", parameters);
             return (bool)(parameters[2].Value ?? false);
         }
 
@@ -35,10 +32,7 @@ namespace ManagePeople.Repository.Implementation
             SqlParameter[] parameters =
             {
                 new SqlParameter("@username", userInfo.username),
-                new SqlParameter("@password", SqlDbType.VarChar, 100)
-                {
-                    Value = userInfo.password ?? (object)DBNull.Value
-                }
+                new SqlParameter("@password", userInfo.password)
             };
             const string query = "[RegisterAppUser] @username, @password";
            return await _dbContext.Database.ExecuteSqlRawAsync(query, parameters);

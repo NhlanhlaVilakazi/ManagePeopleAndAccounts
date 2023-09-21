@@ -6,5 +6,6 @@ namespace ManagePeople.Business.ApiCallService
     {
         string requestUrl { get; set; } 
         Task<HttpStatusCode> Save(T target);
+        Task<bool> Login(T target);
     }
 }
