@@ -19,7 +19,7 @@ $(document).ready(function () {
     });
 
     $(".login-btn").click(function () {
-        debugger
+      
         if (shared.getUserState() === "logged-in") {
             shared.setUserState("logged-out");
             $("#persons-btn").text("Persons");
@@ -90,7 +90,6 @@ $(document).ready(function () {
 
 function hasErrors(username, password, confirm) {
     var hasErrors = false;
-    debugger
     if (username === "" || username === null || username === undefined) {
         hasErrors = true;
     }
