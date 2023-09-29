@@ -22,6 +22,7 @@
                         $(".wrapper").removeClass("popup-active");
                         $("#persons-btn").html('<span class="" role="status" aria-hidden="true"></span> Logout');
                         shared.setUserState("logged-in");
+                        $(location).attr('href', "../Person/Index");
                     } else {
                         shared.stopButtonAnimation("#site-login-btn", "Login");
                         $("#log-error-label").text("Incorrect username or password");

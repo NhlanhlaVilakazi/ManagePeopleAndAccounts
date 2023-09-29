@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using ManagePeople.Data.DataModels.Person;
 using ManagePeople.Data.DataModels.User;
+using ManagePeople.ViewModels.Person;
 using ManagePeople.ViewModels.User;
 
 namespace ManagePeople.Business.MappingProfiles
@@ -11,6 +13,7 @@ namespace ManagePeople.Business.MappingProfiles
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<UserInfoViewModel, UserInfo>().ReverseMap();
+                cfg.CreateMap<PersonViewModel, Person>().ReverseMap();
             });
 
             var mapper = config.CreateMapper();

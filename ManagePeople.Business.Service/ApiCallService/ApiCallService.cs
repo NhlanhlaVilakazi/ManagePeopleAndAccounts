@@ -7,6 +7,15 @@ namespace ManagePeople.Business.ApiCallService
     {
         public string requestUrl { get; set; } = null!;
 
+        public async Task<IQueryable<T>> GetAll()
+        {
+            var response = await HttpRequestBase.httpClient.GetAsync(requestUrl);
+            if (!response.IsSuccessStatusCode)
+                throw new Exception(response.ToString());
+            var result = await response.Content.ReadAsAsync<IEnumerable<T>>();
+            return result.AsQueryable();
+        }
+
         public async Task<bool> Login(T target)
         {
             var response = await HttpRequestBase.httpClient.PostAsJsonAsync($"{requestUrl}/Login", target);

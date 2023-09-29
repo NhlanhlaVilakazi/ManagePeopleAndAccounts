@@ -1,4 +1,5 @@
 using ManagePeople.Business.ApiCallService;
+using ManagePeople.Business.PersonService;
 using ManagePeople.Repository.Implementation;
 using ManagePeople.Repository.Interface;
 
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped(typeof(IApiCallService<>), typeof(ApiCallService<>));
+builder.Services.AddScoped<IPersonService, PersonService>();
 
 var app = builder.Build();
 

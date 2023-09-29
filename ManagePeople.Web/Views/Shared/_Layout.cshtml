@@ -20,8 +20,10 @@
 
     
 
-    <div class="container">
+    <div class="container-fluid">
+        @RenderBody()
         <main role="main" class="pb-3">
+            <input type="hidden" id="person-url" value="@Url.Action("Index", "Person")"/>
             <div class="wrapper">
                 <span class="icon-close">
                     <ion-icon name="close"></ion-icon>
@@ -92,10 +94,9 @@
                    
                 </div>
             </div>
-            @RenderBody()
+            
         </main>
     </div>
-
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
