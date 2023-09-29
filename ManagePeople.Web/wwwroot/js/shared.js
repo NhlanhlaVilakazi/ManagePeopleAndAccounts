@@ -20,4 +20,13 @@
     getUserState() {
         return localStorage.getItem("user-state");
     }
+
+    hideOrShowPersonLink(state) {
+        if (state === "logged-in") {
+            $("#persons-link").css("display", "inline");
+        }
+        else {
+            $("#persons-link").css("display", "none");
+        }
+    }
 }

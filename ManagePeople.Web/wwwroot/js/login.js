@@ -2,6 +2,8 @@
 
     var shared = new SharedFunctionality();
 
+    shared.hideOrShowPersonLink(shared.getUserState());
+
     $("#site-login-btn").click(function () {
         $("#log-error-label").text("");
         var username = $("#log-usernameTxt").val();
@@ -20,9 +22,9 @@
                         $("#log-passwordTxt").val("");
 
                         $(".wrapper").removeClass("popup-active");
-                        $("#persons-btn").html('<span class="" role="status" aria-hidden="true"></span> Logout');
+                        $("#login-btn").html('<span class="" role="status" aria-hidden="true"></span> Logout');
                         shared.setUserState("logged-in");
-                        $(location).attr('href', "../Person/Index");
+                        shared.hideOrShowPersonLink("logged-in");
                     } else {
                         shared.stopButtonAnimation("#site-login-btn", "Login");
                         $("#log-error-label").text("Incorrect username or password");

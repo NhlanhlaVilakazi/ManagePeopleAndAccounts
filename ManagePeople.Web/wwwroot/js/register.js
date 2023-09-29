@@ -4,10 +4,10 @@ $(document).ready(function () {
     var shared = new SharedFunctionality();
 
     if (shared.getUserState() === "logged-in") {
-        $("#persons-btn").text("Logout");
+        $("#login-btn").text("Logout");
     }
     else {
-        $("#persons-btn").text("Persons");
+        $("#login-btn").text("Login");
     }
 
     $(".register-link").click(function () {
@@ -22,7 +22,8 @@ $(document).ready(function () {
       
         if (shared.getUserState() === "logged-in") {
             shared.setUserState("logged-out");
-            $("#persons-btn").text("Persons");
+            $("#login-btn").text("Login");
+            $(location).attr('href', "../Home/Index");
         }
         else {
             if ($(".wrapper").hasClass("popup-active")) {
@@ -60,7 +61,7 @@ $(document).ready(function () {
                             $("#passwordTxt").val("");
                             $("#confirmTxt").val("");
                             $(".wrapper").removeClass("popup-active");
-                            $("#persons-btn").html('<span class="" role="status" aria-hidden="true"></span> Logout');
+                            $("#login-btn").html('<span class="" role="status" aria-hidden="true"></span> Logout');
                             shared.setUserState("logged-in");
                         } else {
                             shared.stopButtonAnimation("#site-register-btn", "Register");
