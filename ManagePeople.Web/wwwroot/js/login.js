@@ -44,7 +44,6 @@
 
 function hasErrors(username, password) {
     var hasErrors = false;
-    debugger
     if (username === "" || username === null || username === undefined) {
         hasErrors = true;
     }
