@@ -1,4 +1,4 @@
-﻿//var js = jQuery.noConflict(true);
+﻿
 
 var people = [];
 $(document).ready(function () {
@@ -13,9 +13,11 @@ function getPeople() {
         async: false,
         success: function (result) {
             $.each(result, function (key, value) {
-                console.log(key);
-                console.log(value);
-                people.push([value.name, value.surname, value.idNumber])
+                var editBtn = "<a onclick='Edit(this)'> <i class='fas fa-pen'></i> </a>";
+                var deleteBtn = "<a href='#'><i class='fas fa-trash'></i></a>";
+                var id = "<input type='hidden' value = " + value.code + "/>";
+                var action = editBtn + "&nbsp; &nbsp; &nbsp;" + deleteBtn + id;
+                people.push([value.name, value.surname, value.idNumber, action])
             })
         },
         error: function (err) {
@@ -27,4 +29,8 @@ function getPeople() {
     $("#person-tbl").DataTable({
         data: people
     });
+
+    function Edit(code) {
+        alert(code);
+    }
 }
