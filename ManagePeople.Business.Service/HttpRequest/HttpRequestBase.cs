@@ -13,7 +13,7 @@ namespace ManagePeople.Business.HttpRequest
         static HttpRequestBase()
         {
             //var config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-            var _url = "https://localhost:7245/api/"; /*config.GetSection("AppSettings:Url").Value;*/
+            var _url = "https://localhost:44383/api/"; /*config.GetSection("AppSettings:Url").Value;*/
             httpClient.BaseAddress = new Uri(_url);
             httpClient.DefaultRequestHeaders.Clear();
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));

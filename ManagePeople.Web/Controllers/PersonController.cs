@@ -24,5 +24,11 @@ namespace ManagePeople.Web.Controllers
             var people = ObjectMapper.Mapper.Map<List<PersonViewModel>>(response);
             return Json(people);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int personId)
+        {
+            return View();
+        }
     }
 }

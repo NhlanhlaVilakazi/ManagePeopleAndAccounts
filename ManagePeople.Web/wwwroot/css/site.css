@@ -37,7 +37,17 @@ body {
     background-position: center;
 }
 
-header{
+.borderless{
+    outline: none;
+    border : 0px hidden;
+    background: inherit;
+}
+
+.borderless:hover {
+    color: #258cfb;
+}
+
+header {
     position: fixed;
     top: 0;
     left: 0;

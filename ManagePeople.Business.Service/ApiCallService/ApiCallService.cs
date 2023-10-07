@@ -19,6 +19,7 @@ namespace ManagePeople.Business.ApiCallService
         public async Task<bool> Login(T target)
         {
             var response = await HttpRequestBase.httpClient.PostAsJsonAsync($"{requestUrl}/Login", target);
+            var resp = await response.Content.ReadAsStringAsync();
             return await response.Content.ReadAsAsync<bool>();
         }
 

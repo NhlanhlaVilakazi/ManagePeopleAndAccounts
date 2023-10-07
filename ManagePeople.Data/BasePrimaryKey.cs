@@ -7,6 +7,6 @@ namespace ManagePeople.Data
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int code { get; set; }
+        public int Code { get; set; }
     }
 }

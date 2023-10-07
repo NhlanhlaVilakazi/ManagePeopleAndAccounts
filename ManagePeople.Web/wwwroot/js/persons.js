@@ -1,6 +1,8 @@
 ﻿
 
 var people = [];
+var action = null;
+
 $(document).ready(function () {
     getPeople();
 });
@@ -12,11 +14,12 @@ function getPeople() {
         type: "GET",
         async: false,
         success: function (result) {
+            
             $.each(result, function (key, value) {
-                var editBtn = "<a onclick='Edit(this)'> <i class='fas fa-pen'></i> </a>";
-                var deleteBtn = "<a href='#'><i class='fas fa-trash'></i></a>";
+                var editBtn = "<button class='borderless edit-btn' > <i class='fas fa-pen'></i> <div style='visibility:hidden;'>{"+ value.code +"}</div></button>";
+                var deleteBtn = "<button class='borderless' data-id="+value.code+"><i class='fas fa-trash'></i></button>";
                 var id = "<input type='hidden' value = " + value.code + "/>";
-                var action = editBtn + "&nbsp; &nbsp; &nbsp;" + deleteBtn + id;
+                action = editBtn + "&nbsp; &nbsp; &nbsp;" + deleteBtn + id;
                 people.push([value.name, value.surname, value.idNumber, action])
             })
         },
@@ -25,12 +28,22 @@ function getPeople() {
             console.log(err);
         }
     });
-   
+
     $("#person-tbl").DataTable({
         data: people
     });
 
-    function Edit(code) {
-        alert(code);
-    }
+    $(".edit-btn").click(function (e) {
+        var personId = getPersonId(e);
+        window.location = "/Person/Edit?personId=" + personId;
+    })
 }
+
+function getPersonId(e) {
+    var innerHtm = e.currentTarget.innerHTML;
+    var firstSub = innerHtm.substr(innerHtm.indexOf("{") + 1);
+    return parseInt(firstSub.substr(0, firstSub.indexOf("}")));
+}
+
+
+

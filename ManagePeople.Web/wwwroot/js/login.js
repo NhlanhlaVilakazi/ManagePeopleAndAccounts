@@ -34,7 +34,7 @@
                 error: function (err) {
                     shared.stopButtonAnimation("#site-login-btn", "Login");
                     $("#log-error-label").text("An error occured, please try again later..");
-
+                    console.log(err);
                 }
             });
         }
