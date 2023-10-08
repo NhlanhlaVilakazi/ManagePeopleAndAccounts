@@ -20,5 +20,11 @@ namespace ManagePeople.API.Controllers
         {
             return await _repository.GetPersons();
         }
+
+        [HttpGet("{personCode}")]
+        public async Task<Person> GetPerasonById([FromRoute] int personCode)
+        {
+            return await _repository.GetPersonByCode(personCode);
+        }
     }
 }

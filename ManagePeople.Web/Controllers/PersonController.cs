@@ -28,7 +28,8 @@ namespace ManagePeople.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int personId)
         {
-            return View();
+            var person = await _personService.GetByCode(personId);
+            return View(person);
         }
     }
 }

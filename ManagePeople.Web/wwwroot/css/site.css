@@ -47,6 +47,11 @@ body {
     color: #258cfb;
 }
 
+.site-content-container {
+    width: 70%;
+    margin-top: 5%;
+}
+
 header {
     position: fixed;
     top: 0;
@@ -116,8 +121,9 @@ header {
 
 /*-------------------Forms-----------------*/
 .wrapper {
-    position: relative;
-    margin-top: 15%;
+    position: absolute;
+    top: 20%;
+    left: 40%;
     width: 400px;
     height: 440px;
     background: transparent;
@@ -126,6 +132,7 @@ header {
     backdrop-filter: blur(20px);
     box-shadow: 0 0 30px rgba(0, 0, 0, .5);
     display: flex;
+    margin: 20px auto;
     justify-content: center;
     align-items: center;
     transition: transform .5s ease, height .2s ease;

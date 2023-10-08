@@ -28,9 +28,9 @@ namespace ManagePeople.Repository.Implementation
             throw new NotImplementedException();
         }
 
-        public Task<Person> GetPersonByCode(int personCode)
+        public async Task<Person> GetPersonByCode(int personCode)
         {
-            throw new NotImplementedException();
+            return await _dbContext.People.Where(person => person.Code == personCode).FirstAsync();
         }
 
         public async Task<List<Person>> GetPersons()

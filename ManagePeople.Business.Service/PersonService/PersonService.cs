@@ -1,10 +1,5 @@
 ﻿using ManagePeople.Business.HttpRequest;
 using ManagePeople.ViewModels.Person;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ManagePeople.Business.PersonService
 {
@@ -15,6 +10,15 @@ namespace ManagePeople.Business.PersonService
         {
             requestUrl = "Person";
         }
+
+        public async Task<PersonViewModel> GetByCode(int personCode)
+        {
+            var response = await HttpRequestBase.httpClient.GetAsync(requestUrl + $"/{personCode}");
+            if (!response.IsSuccessStatusCode)
+                throw new Exception(response.ToString());
+            return await response.Content.ReadAsAsync<PersonViewModel>();
+        }
+
         public async Task<List<PersonViewModel>> GetPersinList()
         {
             var response = await HttpRequestBase.httpClient.GetAsync(requestUrl);
